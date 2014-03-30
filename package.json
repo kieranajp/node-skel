@@ -1,0 +1,14 @@
+{
+  "name" : "mangoes",
+  "description" : "yeah idek",
+  "version" : "0.0.1",
+  "private" : true,
+  "dependencies" : {
+    "express" : "x",
+    "coffee-script" : "x",
+    "stylus" : "x",
+    "nib" : "x",
+    "jade" : "x",
+    "mongoose" : "x"
+  }
+}
