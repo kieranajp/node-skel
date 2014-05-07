@@ -1,14 +1,11 @@
 {
-  "name" : "mangoes",
-  "description" : "yeah idek",
-  "version" : "0.0.1",
+  "name" : "radtac-v2",
+  "description" : "New Radtac website, newer than the last new Radtac website",
+  "version" : "0.2.0",
   "private" : true,
   "dependencies" : {
-    "express" : "x",
-    "coffee-script" : "x",
-    "stylus" : "x",
-    "nib" : "x",
-    "jade" : "x",
-    "mongoose" : "x"
+    "express" : "4.x",
+    "hbs" : "1.x",
+    "less-middleware" : "1.0.x"
   }
 }
