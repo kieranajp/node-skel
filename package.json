@@ -5,6 +5,7 @@
   "private" : true,
   "dependencies" : {
     "express" : "4.x",
+    "http-proxy" : "1.1.x",
     "hbs" : "1.x",
     "less-middleware" : "1.0.x"
   }

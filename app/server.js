@@ -1,26 +1,26 @@
 var config  = require("./config")
+  , http    = require("http")
+  , proxy   = require("http-proxy")
   , express = require("express")
   , hbs     = require("hbs")
   , less    = require("less-middleware")
+  , app     = express()
+  , px      = proxy.createProxyServer({})
   ;
 
-var app = express();
 
-// Set up config for the express app
-
+// Set up config for the LESS pre-processor
 app.use(less(
   __dirname + "/../public",
   {
     debug : config.debug,
     force : config.debug,
     // once  : !config.debug // Only compile on each server restart
-  },
-  {},
-  {
-    sourceMap : true
   }
 ));
 
+
+// Other config for the Express app
 app.set("views", __dirname + "/../templates");
 app.set("view engine", hbs);
 app.use(express.static(__dirname + "/../public"));
@@ -33,6 +33,14 @@ app.use(express.static(__dirname + "/../public"));
   "./routes/test"
 ].forEach(function(route) {
   require(route)(app);
+});
+
+
+app.use(function(req, res, next) {
+  console.log('Forwarding unknown request path %s.', req.url);
+  px.web(req, res, { target: 'http://127.0.0.1:8080' }, function() {
+    res.end();
+  });
 });
 
 
